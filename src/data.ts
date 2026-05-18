@@ -1329,7 +1329,7 @@ export const NAV_LINKS = [
   { id: 'navProject', href: '#projects' },
   { id: 'navPartner', href: '#partners' },
   { id: 'navDealer', href: '#dealer-partnership' },
-  { id: 'navRecruit', href: '#recruitment' }
+  { id: 'navRecruit', href: '#career' }
 ];
 
 export interface PriceListItem {

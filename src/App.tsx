@@ -585,24 +585,24 @@ function AdminProjectItem({ project, onSave, onDelete }: { project: Project, onS
 
 function DealerSection({ lang }: { lang: 'vi' | 'en' }) {
   const dealerData = [
-    { range: '1.000.000 - 50.000.000 đồng', discount: '35%', benefit: lang === 'vi' ? 'Hỗ trợ biển hiệu' : 'Signage Support', highlight: false },
-    { range: '50.000.000 - 200.000.000 đồng', discount: '38%', benefit: lang === 'vi' ? 'Thưởng quý' : 'Quarterly Bonus', highlight: false },
-    { range: '200.000.000 - 500.000.000 đồng', discount: '40%', benefit: lang === 'vi' ? 'Smart TV 4K' : '4K Smart TV', highlight: true },
-    { range: '500.000.000 - 1.000.000.000 đồng', discount: '42%', benefit: lang === 'vi' ? 'Xe Honda SH Mode' : 'Honda SH Mode', highlight: true }
+    { range: '1.000.000 - 100.000.000 đồng', discount: '20% - 30%', benefit: lang === 'vi' ? 'Catalog & Áo thun' : 'Catalogs & Shirts', highlight: false },
+    { range: '100.000.000 - 500.000.000 đồng', discount: '30% - 35%', benefit: lang === 'vi' ? 'Biển hiệu & Kệ mẫu' : 'Signage & Racks', highlight: false },
+    { range: '500.000.000 - 1.000.000.000 đồng', discount: '35% - 38%', benefit: lang === 'vi' ? '0,5 Lượng Vàng SJC' : '0.5 Gold Tael', highlight: true },
+    { range: 'Trên 1.000.000.000 đồng', discount: 'Tối đa 40%', benefit: lang === 'vi' ? '01 Lượng Vàng SJC' : '01 Gold Tael', highlight: true }
   ];
 
   const constructionData = [
-    { range: '1.000.000 - 100.000.000 đồng', discount: '30%', benefit: lang === 'vi' ? 'Giao tận công trình' : 'Site Delivery' },
-    { range: '100.000.000 - 500.000.000 đồng', discount: '35%', benefit: lang === 'vi' ? 'Công nợ 30 ngày' : '30-day Credit' },
-    { range: '500.000.000 - 1.000.000.000 đồng', discount: '38%', benefit: lang === 'vi' ? 'Dự án chiến lược' : 'Project Rebate' },
-    { range: 'Phát triển bền vững', discount: '40%+', benefit: lang === 'vi' ? 'Thưởng 02 Lượng Vàng' : '02 Gold Taels' }
+    { range: '1.000.000 - 200.000.000 đồng', discount: '22% - 28%', benefit: lang === 'vi' ? 'Giao tận công trình' : 'Site Delivery' },
+    { range: '200.000.000 - 1.000.000.000 đồng', discount: '28% - 35%', benefit: lang === 'vi' ? 'Công nợ 45 ngày' : '45-day Credit' },
+    { range: '1.000.000.000 - 2.000.000.000 đồng', discount: '35% - 38%', benefit: lang === 'vi' ? 'Thưởng 01 Lượng Vàng' : '01 Gold Tael' },
+    { range: 'Trên 2.000.000.000 đồng', discount: 'Đến 40%', benefit: lang === 'vi' ? 'Thưởng 03 Lượng Vàng' : '03 Gold Taels' }
   ];
 
   const painterData = [
-    { range: lang === 'vi' ? 'Mỗi 1.000.000 đồng' : 'Per 1,000,000d', discount: '20-25%', benefit: lang === 'vi' ? 'Tích 1.000đ/1đ' : '1,000pts/1d' },
-    { range: '> 50.000.000 đồng/năm', discount: 'Thẻ VIP', benefit: lang === 'vi' ? 'Tặng Máy phun sơn' : 'Paint Sprayer' },
-    { range: '> 200.000.000 đồng/năm', discount: 'BH Thợ', benefit: lang === 'vi' ? 'Bảo hiểm tai nạn' : 'Insurance' },
-    { range: 'Trên 500.000.000 đồng/năm', discount: 'Thưởng Vàng', benefit: lang === 'vi' ? '01 Lượng Vàng SJC' : '01 SJC Gold Tael' }
+    { range: '1.000.000 - 50.000.000 đồng', discount: '15% - 20%', benefit: lang === 'vi' ? 'Tặng Máy phun sơn' : 'Paint Sprayer' },
+    { range: '50.000.000 - 200.000.000 đồng', discount: '20% - 28%', benefit: lang === 'vi' ? 'BH Tai nạn 100tr' : '100M Insurance' },
+    { range: '200.000.000 - 500.000.000 đồng', discount: '28% - 32%', benefit: lang === 'vi' ? 'Thưởng 2 chỉ Vàng' : '2 Gold Rings' },
+    { range: 'Trên 500.000.000 đồng', discount: 'Mức VIP 35%', benefit: lang === 'vi' ? '01 Lượng Vàng SJC' : '01 Gold Tael' }
   ];
 
   const TableColumn = ({ title, icon, data, accentColor = "brand-green" }: { title: string, icon: React.ReactNode, data: any[], accentColor?: string }) => (
@@ -809,11 +809,12 @@ function DealerNetwork({ lang }: { lang: 'vi' | 'en' }) {
 
 function RecruitmentSection({ lang }: { lang: 'vi' | 'en' }) {
   const incomeTable = [
-    { revenue: '1.000.000 - 20.000.000 đồng', base: '6.000.000 đồng', allowance: '3.000.000 đồng', comm: '400.000 đồng (2%)', total: '9.400.000 đồng' },
-    { revenue: '50.000.000 đồng', base: '6.000.000 đồng', allowance: '4.000.000 đồng', comm: '2.000.000 đồng (4%)', total: '12.000.000 đồng' },
-    { revenue: '200.000.000 đồng', base: '6.000.000 đồng', allowance: '5.000.000 đồng', comm: '10.000.000 đồng (5%)', total: '21.000.000 đồng' },
-    { revenue: '500.000.000 đồng', base: '7.000.000 đồng', allowance: '6.000.000 đồng', comm: '35.000.000 đồng (7%)', total: '48.000.000 đồng' },
-    { revenue: lang === 'vi' ? '1.000.000.000 đồng (1 Tỷ)' : '1,000,000,000 VNĐ (1 Billion)', base: '7.000.000 đồng', allowance: '8.000.000 đồng', comm: '100.000.000 đồng (10%)', total: '115.000.000 đồng' }
+    { revenue: 'Dưới 200.000.000', base: '3.500.000', allowance: '1.500.000', comm: '3%', total: '11.000.000' },
+    { revenue: '500.000.000', base: '4.500.000', allowance: '2.500.000', comm: '4%', total: '27.000.000' },
+    { revenue: lang === 'vi' ? '1.000.000.000 (1 Tỷ)' : '1,000,000,000 (1B)', base: '5.000.000', allowance: '3.500.000', comm: '5%', total: '58.500.000' },
+    { revenue: '2.500.000.000', base: '6.000.000', allowance: '5.000.000', comm: '6%', total: '161.000.000' },
+    { revenue: '5.000.000.000', base: lang === 'vi' ? 'Quản lý' : 'Manager', allowance: 'Thưởng Vàng', comm: '7%', total: '360.000.000' },
+    { revenue: '10.000.000.000', base: lang === 'vi' ? 'Giam đốc' : 'Director', allowance: 'Thưởng Vàng', comm: '8%', total: '810.000.000' }
   ];
 
   return (
@@ -825,80 +826,90 @@ function RecruitmentSection({ lang }: { lang: 'vi' | 'en' }) {
       </div>
 
       <div className="section-container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-24 items-center">
-          <div>
+        <div className="grid lg:grid-cols-12 gap-16 items-start">
+          <div className="lg:col-span-3">
             <span className="text-brand-green font-black tracking-[0.4em] uppercase text-[10px] mb-8 block">
               {lang === 'vi' ? 'Cơ hội sự nghiệp 2026' : 'Career Opportunities 2026'}
             </span>
-            <h2 className="text-5xl md:text-8xl font-black mb-10 leading-[0.9] tracking-tighter">
+            <h2 className="text-5xl md:text-6xl font-black mb-10 leading-[0.9] tracking-tighter">
               {lang === 'vi' ? 'Lộ trình thu nhập' : 'Income'} <br />
               <span className="text-brand-green">{lang === 'vi' ? 'Không giới hạn' : 'Unlimited'}</span>
             </h2>
-            <p className="text-xl text-white/50 mb-14 leading-relaxed font-medium">
+            <p className="text-base text-white/50 mb-10 leading-relaxed">
               {lang === 'vi'
-                ? 'G9ECO không chỉ cung cấp một công việc, chúng tôi mang tới một sự nghiệp rực rỡ với thu nhập đột phá dựa trên con số doanh số thực tế.'
-                : 'G9ECO doesn’t just offer a job, we provide a brilliant career with breakthrough income based on actual sales figures.'}
+                ? 'G9ECO mang tới một sự nghiệp rực rỡ với thu nhập đột phá dựa trên mô hình phát triển bền vững.'
+                : 'G9ECO provides a brilliant career with breakthrough income based on a sustainable growth model.'}
             </p>
             
-            <div className="space-y-8 mb-14">
+            <div className="space-y-4 mb-10">
               {[
-                { label: lang === 'vi' ? 'Thưởng cực nóng mở mới' : 'High Performance Bonus', value: '1.000.000 đồng/điểm', color: 'brand-green' },
-                { label: lang === 'vi' ? 'Hỗ trợ thị trường' : 'Market Support', value: '150.000 - 500.000 đồng/ngày', color: 'brand-accent' },
-                { label: lang === 'vi' ? 'Chế độ đãi ngộ' : 'Benefits', value: lang === 'vi' ? 'BHXH + Thưởng tháng 15' : 'Insurance + 15th Month Salary', color: 'brand-gold' }
+                { label: lang === 'vi' ? 'Hỗ trợ thị trường' : 'Market Support', value: '150k - 500k/ngày', color: 'brand-green' },
+                { label: lang === 'vi' ? 'Chế độ đãi ngộ' : 'Benefits', value: lang === 'vi' ? 'BHXH + Thưởng tháng 15' : 'Insurance + 15', color: 'brand-gold' }
               ].map((item, i) => (
-                <motion.div 
+                <div 
                   key={i} 
-                  whileHover={{ scale: 1.02, x: 10 }}
-                  className="flex justify-between items-center p-8 bg-white/5 rounded-[2rem] border border-white/10 group hover:bg-white/10 transition-all duration-300"
+                  className="flex justify-between items-center p-5 bg-white/5 rounded-xl border border-white/10"
                 >
-                  <span className="font-bold text-white/40 group-hover:text-white uppercase text-xs tracking-widest">{item.label}</span>
-                  <span className={`font-black text-lg text-${item.color}`}>{item.value}</span>
-                </motion.div>
+                  <span className="font-bold text-white/40 uppercase text-[9px] tracking-widest">{item.label}</span>
+                  <span className={`font-black text-xs text-${item.color}`}>{item.value}</span>
+                </div>
               ))}
             </div>
 
-            <div className="flex items-center gap-8 p-10 bg-brand-green/20 rounded-[3rem] border border-brand-green/30">
-              <div className="w-20 h-20 bg-brand-green rounded-full flex items-center justify-center shadow-2xl shadow-brand-green/40">
-                <Mail className="text-white" size={32} />
+            <div className="flex items-center gap-5 p-6 bg-brand-green/20 rounded-2xl border border-brand-green/30">
+              <div className="w-12 h-12 bg-brand-green rounded-full flex items-center justify-center flex-shrink-0">
+                <Mail className="text-white" size={20} />
               </div>
-              <div>
-                <div className="text-[10px] font-black text-brand-green uppercase tracking-[0.3em] mb-2">{lang === 'vi' ? 'Gửi hồ sơ ngay' : 'Apply today'}</div>
-                <div className="text-2xl font-black tracking-tight">tuyendung.aig@gmail.com</div>
+              <div className="min-w-0">
+                <div className="text-[8px] font-black text-brand-green uppercase tracking-[0.3em] mb-1">{lang === 'vi' ? 'Tuyển dụng' : 'Recruitment'}</div>
+                <div className="text-sm font-black truncate">tuyendung.aig@gmail.com</div>
               </div>
             </div>
           </div>
 
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-[4rem] p-12 md:p-20 text-brand-charcoal shadow-[0_50px_100px_rgba(0,0,0,0.4)] relative overflow-hidden group"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="lg:col-span-9 bg-white rounded-[3rem] p-6 md:p-10 text-brand-charcoal shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-brand-accent/10 transition-colors" />
-            
-            <h3 className="text-3xl font-black mb-12 flex items-center gap-5">
-              <div className="p-4 bg-brand-accent/10 rounded-2xl">
-                <Zap className="text-brand-accent drop-shadow-[0_0_15px_rgba(34,197,94,0.5)]" size={32} />
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+              <h3 className="text-xl font-black flex items-center gap-3">
+                <div className="p-2.5 bg-brand-accent/10 rounded-lg">
+                  <Zap className="text-brand-accent" size={20} />
+                </div>
+                <span className="uppercase tracking-tighter">{lang === 'vi' ? 'Bảng tính thu nhập Sales' : 'Income Calculator'}</span>
+              </h3>
+              <div className="px-3 py-1.5 bg-brand-light rounded-full text-[9px] font-black uppercase text-brand-charcoal/40 tracking-widest italic whitespace-nowrap">
+                {lang === 'vi' ? 'Đơn vị: VNĐ/Tháng' : 'Unit: VND/Month'}
               </div>
-              <span className="uppercase tracking-tighter">{lang === 'vi' ? 'Ước tính thu nhập Sales' : 'Sales Income Projection'}</span>
-            </h3>
+            </div>
             
-            <div className="overflow-x-auto">
-              <table className="w-full">
+            <div className="overflow-x-auto scrollbar-hide">
+              <table className="w-full min-w-[700px] border-collapse">
                 <thead>
-                  <tr className="text-[10px] font-black uppercase text-brand-charcoal/30 tracking-[0.3em] border-b border-brand-charcoal/10">
-                    <th className="text-left py-6">{lang === 'vi' ? 'Doanh số' : 'Revenue'}</th>
-                    <th className="text-left py-6 px-4">{lang === 'vi' ? 'Lương cứng' : 'Base'}</th>
-                    <th className="text-right py-6">{lang === 'vi' ? 'Tổng thu nhập/Tháng' : 'Total Monthly'}</th>
+                  <tr className="text-[9px] font-black uppercase text-brand-charcoal/30 tracking-widest border-b border-brand-charcoal/10">
+                    <th className="text-left pb-4 py-2">{lang === 'vi' ? 'Thành tích (Doanh số)' : 'Sales Target'}</th>
+                    <th className="text-center pb-4 py-2 px-2">{lang === 'vi' ? 'Lương' : 'Base'}</th>
+                    <th className="text-center pb-4 py-2">{lang === 'vi' ? 'Phụ cấp' : 'Allow.'}</th>
+                    <th className="text-center pb-4 py-2">{lang === 'vi' ? 'Hoa hồng %' : 'Comm %'}</th>
+                    <th className="text-right pb-4 py-2 text-brand-green pr-4">{lang === 'vi' ? 'Tổng tiền nhận' : 'Total Net'}</th>
                   </tr>
                 </thead>
-                <tbody className="text-sm font-bold">
+                <tbody className="text-xs">
                   {incomeTable.map((row, i) => (
-                    <tr key={i} className="border-b border-brand-charcoal/5 group hover:bg-brand-light/50 transition-colors">
-                      <td className="py-8 font-black text-brand-charcoal/80 text-base">{row.revenue}</td>
-                      <td className="py-8 px-4 text-brand-charcoal/50 italic">{row.base}</td>
-                      <td className="py-8 text-right">
-                         <div className="text-2xl font-black text-brand-green font-display">{row.total}</div>
-                         <div className="text-[10px] uppercase text-brand-accent/60 font-black tracking-widest">{row.comm}</div>
+                    <tr key={i} className="border-b border-brand-charcoal/5 group hover:bg-brand-light/20 transition-colors">
+                      <td className="py-5 font-black text-brand-charcoal/80">
+                        <div className="text-sm font-black mb-0.5">{row.revenue}</div>
+                        <div className="text-[8px] uppercase text-brand-charcoal/30 font-bold">{lang === 'vi' ? 'Chỉ tiêu tháng' : 'Monthly Goal'}</div>
+                      </td>
+                      <td className="py-5 px-2 text-center text-brand-charcoal/60 font-bold">{row.base}</td>
+                      <td className="py-5 text-center text-brand-charcoal/60 font-bold">{row.allowance}</td>
+                      <td className="py-5 text-center">
+                         <span className="bg-brand-accent/10 text-brand-accent px-2.5 py-1 rounded-full text-[10px] font-black">{row.comm}</span>
+                      </td>
+                      <td className="py-5 text-right pr-4">
+                         <div className="text-lg font-black text-brand-green font-display">{row.total}</div>
+                         <div className="text-[8px] uppercase text-brand-green/40 font-black tracking-widest">{lang === 'vi' ? 'Tổng thu nhập' : 'Gross Total'}</div>
                       </td>
                     </tr>
                   ))}
@@ -906,10 +917,91 @@ function RecruitmentSection({ lang }: { lang: 'vi' | 'en' }) {
               </table>
             </div>
 
-            <button className="mt-16 w-full bg-brand-charcoal text-white py-8 rounded-[2rem] font-black uppercase tracking-[0.3em] text-sm shadow-2xl hover:bg-brand-green hover:scale-[1.02] transition-all duration-500">
-              {lang === 'vi' ? 'GIA NHẬP BIÊT ĐỘI CHIẾN BINH' : 'JOIN THE WARRIOR TEAM'}
+            <button className="mt-12 w-full bg-brand-charcoal text-white py-6 rounded-2xl font-black uppercase tracking-[0.3em] text-[11px] shadow-xl hover:bg-brand-green transition-all duration-300">
+              {lang === 'vi' ? 'ỨNG TUYỂN NGAY' : 'APPLY NOW'}
             </button>
           </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SustainabilitySection({ lang }: { lang: 'vi' | 'en' }) {
+  return (
+    <section className="py-32 bg-white relative overflow-hidden border-t border-brand-charcoal/5">
+      <div className="section-container">
+        <div className="bg-brand-charcoal rounded-[4rem] p-12 md:p-20 text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-green opacity-20 blur-[120px] rounded-full -mr-48 -mt-48" />
+          
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-4xl md:text-6xl font-black mb-8 leading-tight">
+                {lang === 'vi' ? 'Phân tích tính bền vững' : 'Sustainability Analysis'}
+              </h2>
+              <div className="space-y-6 text-white/70 text-lg leading-relaxed mb-10">
+                <p>
+                  {lang === 'vi' 
+                    ? 'Với biên lợi nhuận sản xuất 50%, G9ECO thiết kế lộ trình chi trả khoa học để đảm bảo sự phát triển ổn định:'
+                    : 'With a 50% production margin, G9ECO designs a scientific payout roadmap to ensure stable growth:'}
+                </p>
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-4">
+                    <div className="mt-1 w-2 h-2 bg-brand-green rounded-full flex-shrink-0" />
+                    <span><strong>{lang === 'vi' ? 'Chiết khấu Đại lý (20-40%):' : 'Dealer Discount (20-40%):'}</strong> {lang === 'vi' ? 'Đây là mức lý tưởng để đại lý có lợi nhuận cao mà công ty vẫn an toàn.' : 'Ideal level for high dealer profit while maintaining safety.'}</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="mt-1 w-2 h-2 bg-brand-accent rounded-full flex-shrink-0" />
+                    <span><strong>{lang === 'vi' ? 'Hoa hồng Sales (3-8%):' : 'Sales Commission (3-8%):'}</strong> {lang === 'vi' ? 'Kích thích tăng trưởng dựa trên hiệu suất thực tế.' : 'Stimulate growth based on actual performance.'}</span>
+                  </li>
+                  <li className="flex items-start gap-4">
+                    <div className="mt-1 w-2 h-2 bg-brand-gold rounded-full flex-shrink-0" />
+                    <span><strong>{lang === 'vi' ? 'Quỹ quà tặng & Thưởng Vàng (2%):' : 'Gifts & Gold Fund (2%):'}</strong> {lang === 'vi' ? 'Giá trị thực tăng niềm tin cho đối tác.' : 'Real value increases partner trust.'}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-white/5 rounded-[3rem] p-10 border border-white/10 backdrop-blur-xl">
+               <div className="text-center mb-10">
+                  <div className="text-brand-green font-black text-5xl mb-2 font-display">50.00%</div>
+                  <div className="text-xs uppercase font-black tracking-widest text-white/40">{lang === 'vi' ? 'Tổng ngân sách chi trả' : 'Total Payout Budget'}</div>
+               </div>
+               
+               <div className="space-y-6">
+                  <div>
+                    <div className="flex justify-between text-sm font-bold mb-2 uppercase tracking-tight">
+                       <span>{lang === 'vi' ? 'Đại lý (Tối đa)' : 'Dealer (Max)'}</span>
+                       <span className="text-brand-green">40.00%</span>
+                    </div>
+                    <div className="h-3 bg-white/10 rounded-full overflow-hidden">
+                       <div className="h-full bg-brand-green w-[80%]" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-sm font-bold mb-2 uppercase tracking-tight">
+                       <span>{lang === 'vi' ? 'Sales (Tối đa)' : 'Sales (Max)'}</span>
+                       <span className="text-brand-accent">8.00%</span>
+                    </div>
+                    <div className="h-3 bg-white/10 rounded-full overflow-hidden">
+                       <div className="h-full bg-brand-accent w-[16%]" />
+                    </div>
+                  </div>
+                  <div className="pt-6 border-t border-white/10">
+                    <div className="flex justify-between text-sm font-bold mb-2 uppercase tracking-tight">
+                       <span>{lang === 'vi' ? 'Quỹ Thưởng & Vận hành' : 'Bonus & Ops Fund'}</span>
+                       <span className="text-brand-gold">2.00%</span>
+                    </div>
+                    <div className="h-3 bg-white/10 rounded-full overflow-hidden">
+                       <div className="h-full bg-brand-gold w-[4%]" />
+                    </div>
+                    <div className="mt-4 text-[11px] text-white/30 italic text-center">
+                       {lang === 'vi' ? '* Tính toán dựa trên mô hình tài chính 2026' : '* Based on 2026 financial model'}
+                    </div>
+                  </div>
+               </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1590,10 +1682,6 @@ export default function App() {
                 EN
               </button>
             </div>
-            <button className="hidden sm:flex bg-brand-green text-white px-8 h-12 items-center rounded-xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-brand-charcoal transition-all shadow-xl shadow-brand-green/20 hover:shadow-black/20 group/collab overflow-hidden relative">
-              <span className="relative z-10">{t.btnCollab}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-accent to-brand-green opacity-0 group-hover/collab:opacity-20 transition-opacity duration-500" />
-            </button>
             <button 
               className="md:hidden p-3 text-brand-charcoal bg-brand-charcoal/5 rounded-xl hover:bg-brand-green/10 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -2906,6 +2994,7 @@ export default function App() {
         <DealerSection lang={lang} />
         <DealerNetwork lang={lang} />
         <RecruitmentSection lang={lang} />
+        <SustainabilitySection lang={lang} />
         <section id="partners" className="py-40 bg-brand-light">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
