@@ -1034,6 +1034,8 @@ export const TRANSLATIONS = {
     navCalculator: 'Dự toán AI',
     navProject: 'Dự án',
     navPartner: 'Đại lý',
+    navDealer: 'Hợp tác Đại lý',
+    navRecruit: 'Tuyển dụng',
     navPrice: 'Bảng giá',
     headerFanDeck: 'Bảng Màu Điện Tử G9ECO',
     chooseColorGroup: 'Chọn nhóm màu phụ phí',
@@ -1192,6 +1194,8 @@ export const TRANSLATIONS = {
     navCalculator: 'AI Estimator',
     navProject: 'Projects',
     navPartner: 'Dealers',
+    navDealer: 'Partner with Us',
+    navRecruit: 'Careers',
     navPrice: 'Pricing',
     headerFanDeck: 'G9ECO Digital Color Chart',
     chooseColorGroup: 'Select Color Price Group',
@@ -1323,7 +1327,9 @@ export const NAV_LINKS = [
   { id: 'navProduct', href: '#products' },
   { id: 'navCalculator', href: '#support' },
   { id: 'navProject', href: '#projects' },
-  { id: 'navPartner', href: '#partners' }
+  { id: 'navPartner', href: '#partners' },
+  { id: 'navDealer', href: '#dealer-partnership' },
+  { id: 'navRecruit', href: '#recruitment' }
 ];
 
 export interface PriceListItem {

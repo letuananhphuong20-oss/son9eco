@@ -24,6 +24,7 @@ import {
   Info,
   ArrowRight,
   Zap,
+  Target,
   Globe,
   Building2,
   ArrowUpRight,
@@ -579,6 +580,339 @@ function AdminProjectItem({ project, onSave, onDelete }: { project: Project, onS
          </div>
        )}
     </div>
+  );
+}
+
+function DealerSection({ lang }: { lang: 'vi' | 'en' }) {
+  const dealerData = [
+    { range: '1.000.000 - 50.000.000 đồng', discount: '35%', benefit: lang === 'vi' ? 'Hỗ trợ biển hiệu' : 'Signage Support', highlight: false },
+    { range: '50.000.000 - 200.000.000 đồng', discount: '38%', benefit: lang === 'vi' ? 'Thưởng quý' : 'Quarterly Bonus', highlight: false },
+    { range: '200.000.000 - 500.000.000 đồng', discount: '40%', benefit: lang === 'vi' ? 'Smart TV 4K' : '4K Smart TV', highlight: true },
+    { range: '500.000.000 - 1.000.000.000 đồng', discount: '42%', benefit: lang === 'vi' ? 'Xe Honda SH Mode' : 'Honda SH Mode', highlight: true }
+  ];
+
+  const constructionData = [
+    { range: '1.000.000 - 100.000.000 đồng', discount: '30%', benefit: lang === 'vi' ? 'Giao tận công trình' : 'Site Delivery' },
+    { range: '100.000.000 - 500.000.000 đồng', discount: '35%', benefit: lang === 'vi' ? 'Công nợ 30 ngày' : '30-day Credit' },
+    { range: '500.000.000 - 1.000.000.000 đồng', discount: '38%', benefit: lang === 'vi' ? 'Dự án chiến lược' : 'Project Rebate' },
+    { range: 'Phát triển bền vững', discount: '40%+', benefit: lang === 'vi' ? 'Thưởng 02 Lượng Vàng' : '02 Gold Taels' }
+  ];
+
+  const painterData = [
+    { range: lang === 'vi' ? 'Mỗi 1.000.000 đồng' : 'Per 1,000,000d', discount: '20-25%', benefit: lang === 'vi' ? 'Tích 1.000đ/1đ' : '1,000pts/1d' },
+    { range: '> 50.000.000 đồng/năm', discount: 'Thẻ VIP', benefit: lang === 'vi' ? 'Tặng Máy phun sơn' : 'Paint Sprayer' },
+    { range: '> 200.000.000 đồng/năm', discount: 'BH Thợ', benefit: lang === 'vi' ? 'Bảo hiểm tai nạn' : 'Insurance' },
+    { range: 'Trên 500.000.000 đồng/năm', discount: 'Thưởng Vàng', benefit: lang === 'vi' ? '01 Lượng Vàng SJC' : '01 SJC Gold Tael' }
+  ];
+
+  const TableColumn = ({ title, icon, data, accentColor = "brand-green" }: { title: string, icon: React.ReactNode, data: any[], accentColor?: string }) => (
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="relative group h-full"
+    >
+      <div className={`absolute -inset-0.5 bg-gradient-to-b from-${accentColor} to-transparent opacity-10 group-hover:opacity-30 rounded-[3rem] blur transition duration-500`} />
+      <div className="relative bg-white rounded-[3rem] p-10 shadow-2xl border border-brand-charcoal/5 flex flex-col h-full overflow-hidden">
+        <div className="flex items-center gap-5 mb-10">
+          <div className={`w-14 h-14 bg-${accentColor}/10 rounded-2xl flex items-center justify-center text-${accentColor} shadow-inner`}>
+            {icon}
+          </div>
+          <h3 className="text-xl font-black text-brand-charcoal uppercase tracking-tighter leading-tight drop-shadow-sm">{title}</h3>
+        </div>
+        
+        <div className="space-y-4 flex-1">
+          {data.map((item, i) => (
+            <motion.div 
+              key={i} 
+              whileHover={{ x: 5, scale: 1.02 }}
+              className={`p-6 rounded-2xl border transition-all duration-300 ${
+                item.highlight 
+                  ? 'bg-gradient-to-r from-brand-gold/5 via-brand-gold/10 to-transparent border-brand-gold/20 shadow-lg shadow-brand-gold/5' 
+                  : 'bg-brand-light/50 border-brand-charcoal/5 hover:border-brand-green/30 hover:bg-white'
+              }`}
+            >
+              <div className={`text-[10px] font-black uppercase mb-1 tracking-widest ${item.highlight ? 'text-brand-gold' : 'text-brand-charcoal/40'}`}>
+                {item.range}
+              </div>
+              <div className="flex justify-between items-end">
+                <div className={`text-2xl font-black font-display ${item.highlight ? 'text-brand-gold' : 'text-brand-charcoal'}`}>
+                  {item.discount}
+                </div>
+                <div className={`text-[12px] font-bold italic tracking-tight ${item.highlight ? 'text-brand-gold/80' : 'text-brand-accent'}`}>
+                  {item.benefit}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <button className={`mt-10 w-full py-5 rounded-2xl bg-brand-charcoal text-white font-black uppercase tracking-widest text-xs hover:bg-${accentColor} hover:shadow-xl transition-all duration-300 group`}>
+          <span className="flex items-center justify-center gap-2">
+            {lang === 'vi' ? 'ĐĂNG KÝ HỢP TÁC' : 'BECOME A PARTNER'}
+            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+          </span>
+        </button>
+      </div>
+    </motion.div>
+  );
+
+  return (
+    <section id="dealer-partnership" className="py-40 bg-brand-light relative overflow-hidden">
+      {/* Background Atmosphere */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] opacity-10 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,#4EB049_0%,transparent_70%)]" />
+      </div>
+
+      <div className="section-container relative z-10">
+        <div className="text-center mb-24">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-brand-green font-black tracking-[0.6em] uppercase text-[10px] mb-8 block drop-shadow-sm"
+          >
+            {lang === 'vi' ? 'Hợp tác chiến lược' : 'Strategic Partnership'}
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-black text-brand-charcoal mb-10 leading-[1.1] tracking-tighter"
+          >
+            {lang === 'vi' ? 'Cùng G9ECO kiến tạo' : 'Building the Future'} <br />
+            <span className="text-brand-green drop-shadow-sm">{lang === 'vi' ? 'Lợi nhuận bền vững' : 'With G9ECO'}</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-xl md:text-2xl text-brand-charcoal/60 max-w-3xl mx-auto font-medium"
+          >
+            {lang === 'vi' 
+              ? 'Chi tiết chính sách chiết khấu minh bạch dành cho 3 nhóm đối tác chiến lược. Cam kết con số thực từ 1.000.000 đồng đến 1.000.000.000 đồng.'
+              : 'Detailed transparent discount policies for 3 strategic partner groups. Commitment to real numbers from 1,000,000 VND to 1,000,000,000 VND.'}
+          </motion.p>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-10 items-stretch">
+          <TableColumn 
+            title={lang === 'vi' ? 'Đại lý Kinh doanh' : 'Retail Dealers'} 
+            icon={<Building2 size={28} />} 
+            data={dealerData} 
+            accentColor="brand-green"
+          />
+          <TableColumn 
+            title={lang === 'vi' ? 'Doanh nghiệp Xây dựng' : 'Construction Firms'} 
+            icon={<Globe size={28} />} 
+            data={constructionData} 
+            accentColor="brand-accent"
+          />
+          <TableColumn 
+            title={lang === 'vi' ? 'Nhà thầu & Thợ sơn' : 'Painters' } 
+            icon={<Palette size={28} />} 
+            data={painterData} 
+            accentColor="brand-gold"
+          />
+        </div>
+
+        <div className="mt-24 p-12 bg-white rounded-[3rem] shadow-2xl border border-brand-charcoal/5 flex flex-col md:flex-row items-center justify-between gap-8">
+           <div className="flex items-center gap-6">
+              <div className="w-16 h-16 bg-brand-green/10 rounded-full flex items-center justify-center text-brand-green">
+                 <Zap size={32} />
+              </div>
+              <div>
+                 <h4 className="text-2xl font-black text-brand-charcoal">{lang === 'vi' ? 'Bạn đang có dự án lớn?' : 'Have a big project?'}</h4>
+                 <p className="text-brand-charcoal/50">{lang === 'vi' ? 'Liên hệ ngay để nhận báo giá chiết khấu đặc biệt cho dự án.' : 'Contact us for special project-based bulk discounts.'}</p>
+              </div>
+           </div>
+           <button className="btn-primary whitespace-nowrap">
+              {lang === 'vi' ? 'NHẬN BÁO GIÁ DỰ ÁN' : 'GET PROJECT QUOTE'}
+           </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DealerNetwork({ lang }: { lang: 'vi' | 'en' }) {
+  const regions = [
+    { name: lang === 'vi' ? 'Miền Bắc' : 'North', count: 120 },
+    { name: lang === 'vi' ? 'Miền Trung' : 'Central', count: 45 },
+    { name: lang === 'vi' ? 'Miền Nam' : 'South', count: 85 },
+  ];
+
+  return (
+    <section id="partners" className="py-32 bg-brand-light overflow-hidden">
+      <div className="section-container">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div>
+            <span className="text-brand-green font-black tracking-[0.6em] uppercase text-[10px] mb-8 block">
+              {lang === 'vi' ? 'Hệ thống phân phối' : 'Distribution Network'}
+            </span>
+            <h2 className="text-4xl md:text-5xl font-black text-brand-charcoal mb-8 leading-tight">
+              {lang === 'vi' ? 'Tìm kiếm Đại lý G9ECO gần bạn' : 'Find G9ECO Dealer Near You'}
+            </h2>
+            <p className="text-lg text-brand-charcoal/60 mb-12">
+              {lang === 'vi' 
+                ? 'Với hơn 250 đại lý và NPP trên toàn quốc, G9ECO luôn sẵn sàng phục vụ mọi công trình. Hãy nhập địa chỉ của bạn để tìm điểm cung cấp chính hãng gần nhất.'
+                : 'With over 250 dealers and distributors nationwide, G9ECO is always ready to serve. Enter your address to find the nearest genuine supplier.'}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <div className="flex-1 relative">
+                <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 text-brand-green" size={20} />
+                <input 
+                  type="text" 
+                  placeholder={lang === 'vi' ? "Nhập tỉnh thành / quận huyện..." : "Enter province / district..."}
+                  className="w-full bg-white border-2 border-brand-charcoal/5 rounded-2xl py-5 pl-16 pr-6 focus:border-brand-green outline-none transition-all font-medium"
+                />
+              </div>
+              <button className="bg-brand-charcoal text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-brand-green transition-all whitespace-nowrap">
+                {lang === 'vi' ? 'TÌM KIẾM' : 'SEARCH'}
+              </button>
+            </div>
+
+            <div className="grid grid-cols-3 gap-6">
+              {regions.map((r, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-3xl font-black text-brand-charcoal mb-1">{r.count}+</div>
+                  <div className="text-[10px] font-black text-brand-charcoal/30 uppercase tracking-widest">{r.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="aspect-square bg-white rounded-[4rem] shadow-2xl overflow-hidden p-8 border border-brand-charcoal/5">
+              <div className="w-full h-full bg-brand-light rounded-[3rem] relative flex items-center justify-center overflow-hidden">
+                <div className="absolute inset-0 opacity-10">
+                  <Globe className="w-full h-full scale-150 rotate-12" />
+                </div>
+                <div className="relative z-10 text-center space-y-6">
+                  <div className="w-20 h-20 bg-brand-green text-white rounded-3xl flex items-center justify-center mx-auto shadow-xl">
+                    <MapPin size={40} />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-2xl font-black text-brand-charcoal uppercase tracking-tight">An Giang Market</div>
+                    <div className="text-brand-green font-bold">45 Points of Sales</div>
+                  </div>
+                  <button className="text-brand-accent font-black text-sm uppercase tracking-widest flex items-center gap-2 mx-auto hover:gap-4 transition-all">
+                    {lang === 'vi' ? 'XEM DANH SÁCH CHI TIẾT' : 'VIEW FULL LIST'} <ArrowRight size={16} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RecruitmentSection({ lang }: { lang: 'vi' | 'en' }) {
+  const incomeTable = [
+    { revenue: '1.000.000 - 20.000.000 đồng', base: '6.000.000 đồng', allowance: '3.000.000 đồng', comm: '400.000 đồng (2%)', total: '9.400.000 đồng' },
+    { revenue: '50.000.000 đồng', base: '6.000.000 đồng', allowance: '4.000.000 đồng', comm: '2.000.000 đồng (4%)', total: '12.000.000 đồng' },
+    { revenue: '200.000.000 đồng', base: '6.000.000 đồng', allowance: '5.000.000 đồng', comm: '10.000.000 đồng (5%)', total: '21.000.000 đồng' },
+    { revenue: '500.000.000 đồng', base: '7.000.000 đồng', allowance: '6.000.000 đồng', comm: '35.000.000 đồng (7%)', total: '48.000.000 đồng' },
+    { revenue: lang === 'vi' ? '1.000.000.000 đồng (1 Tỷ)' : '1,000,000,000 VNĐ (1 Billion)', base: '7.000.000 đồng', allowance: '8.000.000 đồng', comm: '100.000.000 đồng (10%)', total: '115.000.000 đồng' }
+  ];
+
+  return (
+    <section id="career" className="py-40 bg-brand-charcoal text-white relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+        <div className="absolute inset-0 bg-dots-pattern opacity-30" />
+        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-l from-brand-green/40 to-transparent" />
+      </div>
+
+      <div className="section-container relative z-10">
+        <div className="grid lg:grid-cols-2 gap-24 items-center">
+          <div>
+            <span className="text-brand-green font-black tracking-[0.4em] uppercase text-[10px] mb-8 block">
+              {lang === 'vi' ? 'Cơ hội sự nghiệp 2026' : 'Career Opportunities 2026'}
+            </span>
+            <h2 className="text-5xl md:text-8xl font-black mb-10 leading-[0.9] tracking-tighter">
+              {lang === 'vi' ? 'Lộ trình thu nhập' : 'Income'} <br />
+              <span className="text-brand-green">{lang === 'vi' ? 'Không giới hạn' : 'Unlimited'}</span>
+            </h2>
+            <p className="text-xl text-white/50 mb-14 leading-relaxed font-medium">
+              {lang === 'vi'
+                ? 'G9ECO không chỉ cung cấp một công việc, chúng tôi mang tới một sự nghiệp rực rỡ với thu nhập đột phá dựa trên con số doanh số thực tế.'
+                : 'G9ECO doesn’t just offer a job, we provide a brilliant career with breakthrough income based on actual sales figures.'}
+            </p>
+            
+            <div className="space-y-8 mb-14">
+              {[
+                { label: lang === 'vi' ? 'Thưởng cực nóng mở mới' : 'High Performance Bonus', value: '1.000.000 đồng/điểm', color: 'brand-green' },
+                { label: lang === 'vi' ? 'Hỗ trợ thị trường' : 'Market Support', value: '150.000 - 500.000 đồng/ngày', color: 'brand-accent' },
+                { label: lang === 'vi' ? 'Chế độ đãi ngộ' : 'Benefits', value: lang === 'vi' ? 'BHXH + Thưởng tháng 15' : 'Insurance + 15th Month Salary', color: 'brand-gold' }
+              ].map((item, i) => (
+                <motion.div 
+                  key={i} 
+                  whileHover={{ scale: 1.02, x: 10 }}
+                  className="flex justify-between items-center p-8 bg-white/5 rounded-[2rem] border border-white/10 group hover:bg-white/10 transition-all duration-300"
+                >
+                  <span className="font-bold text-white/40 group-hover:text-white uppercase text-xs tracking-widest">{item.label}</span>
+                  <span className={`font-black text-lg text-${item.color}`}>{item.value}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-8 p-10 bg-brand-green/20 rounded-[3rem] border border-brand-green/30">
+              <div className="w-20 h-20 bg-brand-green rounded-full flex items-center justify-center shadow-2xl shadow-brand-green/40">
+                <Mail className="text-white" size={32} />
+              </div>
+              <div>
+                <div className="text-[10px] font-black text-brand-green uppercase tracking-[0.3em] mb-2">{lang === 'vi' ? 'Gửi hồ sơ ngay' : 'Apply today'}</div>
+                <div className="text-2xl font-black tracking-tight">tuyendung.aig@gmail.com</div>
+              </div>
+            </div>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="bg-white rounded-[4rem] p-12 md:p-20 text-brand-charcoal shadow-[0_50px_100px_rgba(0,0,0,0.4)] relative overflow-hidden group"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-green/5 rounded-full -mr-32 -mt-32 blur-3xl group-hover:bg-brand-accent/10 transition-colors" />
+            
+            <h3 className="text-3xl font-black mb-12 flex items-center gap-5">
+              <div className="p-4 bg-brand-accent/10 rounded-2xl">
+                <Zap className="text-brand-accent drop-shadow-[0_0_15px_rgba(34,197,94,0.5)]" size={32} />
+              </div>
+              <span className="uppercase tracking-tighter">{lang === 'vi' ? 'Ước tính thu nhập Sales' : 'Sales Income Projection'}</span>
+            </h3>
+            
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="text-[10px] font-black uppercase text-brand-charcoal/30 tracking-[0.3em] border-b border-brand-charcoal/10">
+                    <th className="text-left py-6">{lang === 'vi' ? 'Doanh số' : 'Revenue'}</th>
+                    <th className="text-left py-6 px-4">{lang === 'vi' ? 'Lương cứng' : 'Base'}</th>
+                    <th className="text-right py-6">{lang === 'vi' ? 'Tổng thu nhập/Tháng' : 'Total Monthly'}</th>
+                  </tr>
+                </thead>
+                <tbody className="text-sm font-bold">
+                  {incomeTable.map((row, i) => (
+                    <tr key={i} className="border-b border-brand-charcoal/5 group hover:bg-brand-light/50 transition-colors">
+                      <td className="py-8 font-black text-brand-charcoal/80 text-base">{row.revenue}</td>
+                      <td className="py-8 px-4 text-brand-charcoal/50 italic">{row.base}</td>
+                      <td className="py-8 text-right">
+                         <div className="text-2xl font-black text-brand-green font-display">{row.total}</div>
+                         <div className="text-[10px] uppercase text-brand-accent/60 font-black tracking-widest">{row.comm}</div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <button className="mt-16 w-full bg-brand-charcoal text-white py-8 rounded-[2rem] font-black uppercase tracking-[0.3em] text-sm shadow-2xl hover:bg-brand-green hover:scale-[1.02] transition-all duration-500">
+              {lang === 'vi' ? 'GIA NHẬP BIÊT ĐỘI CHIẾN BINH' : 'JOIN THE WARRIOR TEAM'}
+            </button>
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -1282,7 +1616,7 @@ export default function App() {
                     <a 
                       key={link.id} 
                       href={link.href} 
-                      className="text-4xl font-serif font-black text-brand-charcoal"
+                      className="text-2xl font-serif font-black text-brand-charcoal hover:text-brand-green transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {t[link.id as keyof typeof t]}
@@ -2569,6 +2903,9 @@ export default function App() {
         </section>
 
         {/* Partners & Projects Section */}
+        <DealerSection lang={lang} />
+        <DealerNetwork lang={lang} />
+        <RecruitmentSection lang={lang} />
         <section id="partners" className="py-40 bg-brand-light">
           <div className="section-container">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
